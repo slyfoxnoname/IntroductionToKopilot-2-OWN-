@@ -7,10 +7,6 @@ plugins {
     application
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     testImplementation(kotlin("test"))
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
@@ -18,6 +14,7 @@ dependencies {
 
 kotlin {
     sourceSets.named("main") {
+        kotlin.srcDir("src/part1")
         kotlin.srcDir("src/part2/kotlin")
     }
 

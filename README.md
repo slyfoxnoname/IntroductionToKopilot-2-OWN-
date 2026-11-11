@@ -1,5 +1,9 @@
 # Kotlin Homeworks 26
 
+Корневой Gradle-модуль собирает Kotlin-файлы из `src/part1` и
+`src/part2/kotlin`. Общие репозитории Google и Maven Central настроены в корневом
+`settings.gradle.kts`; Android-зависимости остаются только у Android-модуля.
+
 У репозиторії є консольний Kotlin/JVM-проєкт і Android-застосунки з домашніх
 завдань. HM4 під’єднаний як окремий Gradle-модуль `hm4`. Команда `run` запускає
 консольну підказку; вона не намагається запустити Android-код як JVM-програму.
