@@ -2,6 +2,8 @@ import org.gradle.api.tasks.compile.JavaCompile
 
 plugins {
     kotlin("jvm") version "2.2.21"
+    kotlin("android") version "2.2.21" apply false
+    id("com.android.application") version "8.13.2" apply false
     application
 }
 

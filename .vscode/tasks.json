@@ -23,6 +23,21 @@
       "command": "${workspaceFolder}\\gradlew.bat",
       "args": ["run"],
       "problemMatcher": []
+    },
+    {
+      "label": "Android: HM4 build",
+      "type": "process",
+      "command": "${workspaceFolder}\\gradlew.bat",
+      "args": [":hm4:assembleDebug"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Android: HM4 install",
+      "type": "process",
+      "command": "${workspaceFolder}\\gradlew.bat",
+      "args": [":hm4:installDebug"],
+      "problemMatcher": []
     }
   ]
 }
