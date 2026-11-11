@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Kotlin: build",
+      "type": "process",
+      "command": "${workspaceFolder}\\gradlew.bat",
+      "args": ["build"],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Kotlin: test",
+      "type": "process",
+      "command": "${workspaceFolder}\\gradlew.bat",
+      "args": ["test"],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Kotlin: run",
+      "type": "process",
+      "command": "${workspaceFolder}\\gradlew.bat",
+      "args": ["run"],
+      "problemMatcher": []
+    }
+  ]
+}

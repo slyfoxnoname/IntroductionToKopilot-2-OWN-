@@ -1,0 +1,38 @@
+# Gradle
+.gradle/
+build/
+
+# IDE
+out/
+.idea/
+*.iml
+
+# Kotlin
+.kotlin/
+
+# Local machine configuration
+local.properties
+
+# Compiled files and crash dumps
+*.class
+*.hprof
+
+# Android build outputs
+*.apk
+*.aab
+*.aar
+*.dex
+.externalNativeBuild/
+.cxx/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor and temporary files
+*.swp
+*.swo
+*~
+*.tmp
+*.log
