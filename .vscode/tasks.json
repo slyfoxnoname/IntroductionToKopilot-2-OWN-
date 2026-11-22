@@ -34,6 +34,7 @@
         ":hm5:assembleDebug",
         ":hm6:assembleDebug",
         ":hm7:assembleDebug",
+        ":hm8:assembleDebug",
         ":hm9:assembleDebug"
       ],
       "group": "build",
@@ -72,6 +73,13 @@
       "type": "process",
       "command": "${workspaceFolder}\\gradlew.bat",
       "args": [":hm7:installDebug"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Android: HM8 install",
+      "type": "process",
+      "command": "${workspaceFolder}\\gradlew.bat",
+      "args": [":hm8:installDebug"],
       "problemMatcher": []
     },
     {

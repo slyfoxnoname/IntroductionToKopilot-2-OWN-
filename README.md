@@ -13,6 +13,7 @@
 | `:hm5` | Android | `part2/hm5/` |
 | `:hm6` | Android | `part2/hm6/` |
 | `:hm7` | Android | `part2/hm7/` |
+| `:hm8` | Android | `part2/hm8/dice/` |
 | `:hm9` | Android | `part2/hm9/` |
 
 ## Потрібні інструменти
@@ -60,17 +61,17 @@ sdk.dir=C:\\Users\\<ім’я>\\AppData\\Local\\Android\\Sdk
 .\gradlew.bat projects
 ```
 
-## Як запустити Android-застосунок (`:hm3`–`:hm7`, `:hm9`)
+## Як запустити Android-застосунок (`:hm3`–`:hm9`)
 
 1. Запустіть емулятор або під’єднайте Android-пристрій із увімкненим USB
    debugging.
-2. Зберіть та встановіть потрібний застосунок, наприклад HM7:
+2. Зберіть та встановіть потрібний застосунок, наприклад HM8:
 
 ```powershell
-.\gradlew.bat :hm7:installDebug
+.\gradlew.bat :hm8:installDebug
 ```
 
-Для інших застосунків замініть `hm7` на відповідний модуль (`hm3`–`hm6` або `hm9`).
+Для інших застосунків замініть `hm8` на відповідний модуль (`hm3`–`hm7` або `hm9`).
 Щоб зібрати debug APK без встановлення:
 
 ```powershell
@@ -79,6 +80,7 @@ sdk.dir=C:\\Users\\<ім’я>\\AppData\\Local\\Android\\Sdk
 .\gradlew.bat :hm5:assembleDebug
 .\gradlew.bat :hm6:assembleDebug
 .\gradlew.bat :hm7:assembleDebug
+.\gradlew.bat :hm8:assembleDebug
 .\gradlew.bat :hm9:assembleDebug
 ```
 
@@ -92,9 +94,10 @@ sdk.dir=C:\\Users\\<ім’я>\\AppData\\Local\\Android\\Sdk
 | `:hm5` | `com.example.lifecyclecontextapp` |
 | `:hm6` | `com.example.mvvm` |
 | `:hm7` | `com.example.dice` |
+| `:hm8` | `com.example.dice` |
 | `:hm9` | `com.example.coroutineserrors` |
 
-Наприклад, після `:hm7:installDebug`:
+Наприклад, після `:hm8:installDebug`:
 
 ```powershell
 adb shell monkey -p com.example.dice 1

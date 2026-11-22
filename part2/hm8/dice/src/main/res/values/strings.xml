@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Симулятор гральних кісток</string>
+    <string name="roll_instructions">Натисніть ROLL, щоб кинути п’ять кісток</string>
+    <string name="roll_button_initial">ROLL</string>
+    <string name="die_description">Гральна кістка</string>
+</resources>
