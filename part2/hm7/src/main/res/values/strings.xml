@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Кости</string>
+    <string name="roll_instructions">Нажмите кнопку, чтобы бросить пять кубиков</string>
+    <string name="roll_dice">Бросить кубики</string>
+    <string name="die_placeholder">Игральная кость</string>
+    <string name="die_description">Кубик: %1$d точек</string>
+</resources>

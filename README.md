@@ -12,6 +12,7 @@
 | `:hm4` | Android | `part2/hm4/` |
 | `:hm5` | Android | `part2/hm5/` |
 | `:hm6` | Android | `part2/hm6/` |
+| `:hm7` | Android | `part2/hm7/` |
 
 ## Потрібні інструменти
 
@@ -58,17 +59,17 @@ sdk.dir=C:\\Users\\<ім’я>\\AppData\\Local\\Android\\Sdk
 .\gradlew.bat projects
 ```
 
-## Як запустити Android-застосунок (`:hm3`–`:hm6`)
+## Як запустити Android-застосунок (`:hm3`–`:hm7`)
 
 1. Запустіть емулятор або під’єднайте Android-пристрій із увімкненим USB
    debugging.
-2. Зберіть та встановіть потрібний застосунок, наприклад HM6:
+2. Зберіть та встановіть потрібний застосунок, наприклад HM7:
 
 ```powershell
-.\gradlew.bat :hm6:installDebug
+.\gradlew.bat :hm7:installDebug
 ```
 
-Для інших застосунків замініть `hm6` на `hm3`, `hm4` або `hm5`. Щоб зібрати
+Для інших застосунків замініть `hm7` на відповідний модуль (`hm3`–`hm6`). Щоб зібрати
 debug APK без встановлення:
 
 ```powershell
@@ -76,6 +77,7 @@ debug APK без встановлення:
 .\gradlew.bat :hm4:assembleDebug
 .\gradlew.bat :hm5:assembleDebug
 .\gradlew.bat :hm6:assembleDebug
+.\gradlew.bat :hm7:assembleDebug
 ```
 
 Команда `installDebug` встановлює, але не відкриває застосунок. Щоб запустити
@@ -87,11 +89,12 @@ debug APK без встановлення:
 | `:hm4` | `com.example.lifecycleapp` |
 | `:hm5` | `com.example.lifecyclecontextapp` |
 | `:hm6` | `com.example.mvvm` |
+| `:hm7` | `com.example.dice` |
 
-Наприклад, після `:hm6:installDebug`:
+Наприклад, після `:hm7:installDebug`:
 
 ```powershell
-adb shell monkey -p com.example.mvvm 1
+adb shell monkey -p com.example.dice 1
 ```
 
 Для запуску іншого застосунку замініть `applicationId` у команді. `adb` має бути
@@ -103,11 +106,3 @@ Gradle, вибрати потрібний модуль і натиснути **R
 
 Зібрані APK з’являються у відповідному каталозі
 `part2/hmN/build/outputs/apk/debug/`.
-
-## Додати нову домашню роботу HM7 за 2 кроки
-
-1. Створіть Android-модуль `part2/hm7/` із `build.gradle.kts` та типовою
-   структурою `src/main/`, використовуючи наявний Android-модуль як шаблон.
-2. Додайте `include(":hm7")` і
-   `project(":hm7").projectDir = file("part2/hm7")` у `settings.gradle.kts`, а
-   потім зберіть модуль командою `.\gradlew.bat :hm7:assembleDebug`.
