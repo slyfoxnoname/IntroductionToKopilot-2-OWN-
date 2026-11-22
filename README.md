@@ -1,62 +1,113 @@
 # Kotlin Homeworks 26
 
-Корневой Gradle-модуль собирает Kotlin-файлы из `src/part1` и
-`src/part2/kotlin`. Общие репозитории Google и Maven Central настроены в корневом
-`settings.gradle.kts`; Android-зависимости остаются только у Android-модуля.
+Репозиторій містить Kotlin/JVM-вправи та Android-застосунки. Кожне завдання
+зібране як окремий Gradle-модуль.
 
-У репозиторії є консольний Kotlin/JVM-проєкт і Android-застосунки з домашніх
-завдань. HM4 під’єднаний як окремий Gradle-модуль `hm4`. Команда `run` запускає
-консольну підказку; вона не намагається запустити Android-код як JVM-програму.
+## Модулі
 
-## Потрібно
+| Модуль | Тип | Розташування |
+|---|---|---|
+| `:part1` | Kotlin/JVM | `part1/` |
+| `:hm3` | Android | `part2/hm3/` |
+| `:hm4` | Android | `part2/hm4/` |
+| `:hm5` | Android | `part2/hm5/` |
+| `:hm6` | Android | `part2/hm6/` |
+
+## Потрібні інструменти
 
 - JDK 17 або новіший
-- Для Android HM4: Android SDK Platform 35 і Android Build Tools 35.0.0
-- Інтернет під час першого запуску Gradle Wrapper (він завантажить Gradle та залежності)
+- Для Android-модулів: Android SDK Platform 35 і Build Tools 35.0.0
+- Інтернет під час першого запуску Gradle Wrapper для завантаження Gradle та залежностей
 
-Android SDK можна встановити через Android Studio → **Tools → SDK Manager**.
-Якщо Gradle не знаходить SDK, задайте `ANDROID_HOME` або створіть локальний
-`local.properties` із рядком `sdk.dir=C:\\Users\\<ім’я>\\AppData\\Local\\Android\\Sdk`.
+Якщо Gradle не знаходить Android SDK, задайте `ANDROID_HOME` або вкажіть
+шлях до SDK у локальному `local.properties`:
 
-## Консольний Kotlin/JVM-проєкт
-
-У Windows PowerShell:
-
-```powershell
-.\gradlew.bat run
-.\gradlew.bat test
+```properties
+sdk.dir=C:\\Users\\<ім’я>\\AppData\\Local\\Android\\Sdk
 ```
 
-Для запуску іншого Kotlin-файлу з функцією `main` задайте його клас:
+`local.properties` є локальним файлом налаштувань і не додається до Git.
+
+## Як запустити Kotlin/JVM-вправу (`:part1`)
+
+Відкрийте PowerShell у корені репозиторію. Щоб зібрати JVM-модуль або запустити
+його стандартну точку входу:
 
 ```powershell
-.\gradlew.bat run -PmainClass=НазваФайлуKt
+.\gradlew.bat :part1:build
+.\gradlew.bat :part1:run
 ```
 
-Якщо у файлі є `package`, додайте його до імені класу, наприклад
-`-PmainClass=lesson.HelloKt`.
-
-## Android HM4
-
-Відкрийте корінь репозиторію в Android Studio, дочекайтеся синхронізації Gradle
-та запустіть конфігурацію `hm4` на емуляторі або під’єднаному пристрої.
-
-Зібрати debug APK без емулятора можна з PowerShell:
+Стандартна точка входу `MainKt` виводить коротку підказку про Android HM4.
+Щоб запустити конкретну вправу, у якій є функція `main()`, передайте її
+згенеровану JVM-назву через `-PmainClass`. Наприклад, для
+`part1/src/main/kotlin/hm4/ex1/main.kt`:
 
 ```powershell
+.\gradlew.bat :part1:run -PmainClass=hm4.ex1.MainKt
+```
+
+Загальний формат: `-PmainClass=<пакет>.<НазваФайлу>Kt`. Для файла без `package`
+використовуйте лише `<НазваФайлу>Kt`. Файли, у яких немає `main()`, не
+запускаються окремо — запускайте відповідну вправу з її точкою входу.
+
+Інші корисні команди:
+
+```powershell
+.\gradlew.bat :part1:test
+.\gradlew.bat projects
+```
+
+## Як запустити Android-застосунок (`:hm3`–`:hm6`)
+
+1. Запустіть емулятор або під’єднайте Android-пристрій із увімкненим USB
+   debugging.
+2. Зберіть та встановіть потрібний застосунок, наприклад HM6:
+
+```powershell
+.\gradlew.bat :hm6:installDebug
+```
+
+Для інших застосунків замініть `hm6` на `hm3`, `hm4` або `hm5`. Щоб зібрати
+debug APK без встановлення:
+
+```powershell
+.\gradlew.bat :hm3:assembleDebug
 .\gradlew.bat :hm4:assembleDebug
+.\gradlew.bat :hm5:assembleDebug
+.\gradlew.bat :hm6:assembleDebug
 ```
 
-Встановити на під’єднаний пристрій або запущений емулятор:
+Команда `installDebug` встановлює, але не відкриває застосунок. Щоб запустити
+його з PowerShell через ADB, використайте `applicationId` потрібного модуля:
+
+| Модуль | `applicationId` |
+|---|---|
+| `:hm3` | `com.example.hm3` |
+| `:hm4` | `com.example.lifecycleapp` |
+| `:hm5` | `com.example.lifecyclecontextapp` |
+| `:hm6` | `com.example.mvvm` |
+
+Наприклад, після `:hm6:installDebug`:
 
 ```powershell
-.\gradlew.bat :hm4:installDebug
+adb shell monkey -p com.example.mvvm 1
 ```
 
-Після встановлення відкрийте застосунок **LifecycleHomeworkApp** на пристрої.
-Android Studio може встановити й одразу запустити його кнопкою **Run**.
+Для запуску іншого застосунку замініть `applicationId` у команді. `adb` має бути
+доступний у `PATH` разом з Android SDK Platform Tools.
 
-APK буде створено в `src/part2/HM4/build/outputs/apk/debug/`.
-У VS Code ці дії також доступні через **Terminal → Run Task** → **Android: HM4 build**
-або **Android: HM4 install**. Звичайна задача **Kotlin: run** запускає лише
-консольну програму, а не Android-застосунок.
+Також можна відкрити корінь репозиторію в Android Studio, дочекатися синхронізації
+Gradle, вибрати потрібний модуль і натиснути **Run**. У VS Code ці команди доступні
+через **Terminal → Run Task**.
+
+Зібрані APK з’являються у відповідному каталозі
+`part2/hmN/build/outputs/apk/debug/`.
+
+## Додати нову домашню роботу HM7 за 2 кроки
+
+1. Створіть Android-модуль `part2/hm7/` із `build.gradle.kts` та типовою
+   структурою `src/main/`, використовуючи наявний Android-модуль як шаблон.
+2. Додайте `include(":hm7")` і
+   `project(":hm7").projectDir = file("part2/hm7")` у `settings.gradle.kts`, а
+   потім зберіть модуль командою `.\gradlew.bat :hm7:assembleDebug`.

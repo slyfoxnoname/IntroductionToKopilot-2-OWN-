@@ -1,36 +1,5 @@
-import org.gradle.api.tasks.compile.JavaCompile
-
 plugins {
-    kotlin("jvm") version "2.2.21"
+    kotlin("jvm") version "2.2.21" apply false
     kotlin("android") version "2.2.21" apply false
     id("com.android.application") version "8.13.2" apply false
-    application
-}
-
-dependencies {
-    testImplementation(kotlin("test"))
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-kotlin {
-    sourceSets.named("main") {
-        kotlin.srcDir("src/part1")
-        kotlin.srcDir("src/part2/kotlin")
-    }
-
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-    }
-}
-
-application {
-    mainClass.set(providers.gradleProperty("mainClass").orElse("MainKt"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.withType<JavaCompile>().configureEach {
-    options.release.set(17)
 }

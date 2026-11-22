@@ -16,8 +16,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "kotlin-homeworks-26"
 
-include(":hm4")
-project(":hm4").projectDir = file("src/part2/HM4")
-
-include(":hm6")
-project(":hm6").projectDir = file("src/part2/HM6/app")
+include(":part1", ":hm3", ":hm4", ":hm5", ":hm6")
+project(":part1").projectDir = file("part1")
+project(":hm3").projectDir = file("part2/hm3")
+project(":hm4").projectDir = file("part2/hm4")
+project(":hm5").projectDir = file("part2/hm5")
+project(":hm6").projectDir = file("part2/hm6")

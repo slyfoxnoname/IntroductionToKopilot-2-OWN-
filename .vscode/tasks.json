@@ -5,7 +5,7 @@
       "label": "Kotlin: build",
       "type": "process",
       "command": "${workspaceFolder}\\gradlew.bat",
-      "args": ["build"],
+      "args": [":part1:build"],
       "group": "build",
       "problemMatcher": []
     },
@@ -13,7 +13,7 @@
       "label": "Kotlin: test",
       "type": "process",
       "command": "${workspaceFolder}\\gradlew.bat",
-      "args": ["test"],
+      "args": [":part1:test"],
       "group": "test",
       "problemMatcher": []
     },
@@ -21,15 +21,27 @@
       "label": "Kotlin: run",
       "type": "process",
       "command": "${workspaceFolder}\\gradlew.bat",
-      "args": ["run"],
+      "args": [":part1:run"],
       "problemMatcher": []
     },
     {
-      "label": "Android: HM4 build",
+      "label": "Android: build all",
       "type": "process",
       "command": "${workspaceFolder}\\gradlew.bat",
-      "args": [":hm4:assembleDebug"],
+      "args": [
+        ":hm3:assembleDebug",
+        ":hm4:assembleDebug",
+        ":hm5:assembleDebug",
+        ":hm6:assembleDebug"
+      ],
       "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Android: HM3 install",
+      "type": "process",
+      "command": "${workspaceFolder}\\gradlew.bat",
+      "args": [":hm3:installDebug"],
       "problemMatcher": []
     },
     {
@@ -37,6 +49,20 @@
       "type": "process",
       "command": "${workspaceFolder}\\gradlew.bat",
       "args": [":hm4:installDebug"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Android: HM5 install",
+      "type": "process",
+      "command": "${workspaceFolder}\\gradlew.bat",
+      "args": [":hm5:installDebug"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Android: HM6 install",
+      "type": "process",
+      "command": "${workspaceFolder}\\gradlew.bat",
+      "args": [":hm6:installDebug"],
       "problemMatcher": []
     }
   ]
